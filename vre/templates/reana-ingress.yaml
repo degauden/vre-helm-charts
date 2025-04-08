@@ -1,0 +1,45 @@
+{{- if .Values.reana.ingress_override -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    meta.helm.sh/release-name: reana
+    meta.helm.sh/release-namespace: reana
+    {{- if .Values.reana.ingress.annotations }}
+    {{- toYaml .Values.reana.ingress.annotations | nindent 4 }}
+    {{- end }}
+  name: {{ .Release.Name }}-reana-ingress
+spec:
+  ingressClassName: {{ .Values.reana.ingress.ingressClassName }}
+  tls:
+  - secretName: cert-manager-tls-ingress-secret-reana
+    hosts:
+    - {{ .Values.reana.reana_hostname }}
+  rules:
+  - host: {{ .Values.reana.reana_hostname }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: {{ .Release.Name }}-server
+            port:
+              number: 80
+        path: /api
+        pathType: Prefix
+      - backend:
+          service:
+            name: {{ .Release.Name }}-server
+            port:
+              number: 80
+        path: /oauth
+        pathType: Prefix
+      - backend:
+          service:
+            name: {{ .Release.Name }}-ui
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+
+
+{{- end -}}

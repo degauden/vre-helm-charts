@@ -1,0 +1,6 @@
+# Configuration for chart-releaser
+# https://github.com/helm/chart-releaser
+
+owner: vre-hub
+git-repo: helm-charts
+charts-repo-url: https://vre-hub.github.io/helm-charts
