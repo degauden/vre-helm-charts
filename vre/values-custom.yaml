@@ -1,0 +1,7 @@
+reana:
+  secrets:
+    login:
+      escape-iam:
+        # TODO: set this
+        consumer_key: "testkey"
+        consumer_secret: "testsecret"

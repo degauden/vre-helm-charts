@@ -9,4 +9,5 @@ deploy:
         chartPath: vre
         valuesFiles:
           - vre/values.yaml
+          - vre/values-custom.yaml
         version: 0.1.0-dev0
