@@ -296,7 +296,7 @@ reana:
   reana_hostname: "reana-vre.obsuks4.unige.ch"
 
   db_env_config:
-    REANA_DB_NAME: "reana"
+    REANA_DB_NAME: "postgres"
     REANA_DB_PORT: "5432"
     REANA_DB_HOST: "postgres-postgresql"
     # There are two more environment variables that should be set in order
