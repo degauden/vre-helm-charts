@@ -58,6 +58,7 @@ The Virtual Research Environment developed at CERN.>
 | jupyterhub.singleuser.cmd | string | `nil` |  |
 | jupyterhub.singleuser.defaultUrl | string | `"/lab"` |  |
 | jupyterhub.singleuser.extraEnv.OAUTH2_TOKEN | string | `"FILE:/tmp/eos_oauth.token"` |  |
+| jupyterhub.singleuser.extraEnv.RUCIO_AUTH_HOST | string | `"https://vre-rucio-auth.cern.ch"` |  |
 | jupyterhub.singleuser.extraEnv.RUCIO_AUTH_URL | string | `"https://vre-rucio-auth.cern.ch"` |  |
 | jupyterhub.singleuser.extraEnv.RUCIO_BASE_URL | string | `"https://vre-rucio.cern.ch"` |  |
 | jupyterhub.singleuser.extraEnv.RUCIO_CA_CERT | string | `"/certs/rucio_ca.pem"` |  |
@@ -72,6 +73,7 @@ The Virtual Research Environment developed at CERN.>
 | jupyterhub.singleuser.extraEnv.RUCIO_OIDC_ENV_NAME | string | `"RUCIO_ACCESS_TOKEN"` |  |
 | jupyterhub.singleuser.extraEnv.RUCIO_PATH_BEGINS_AT | string | `"5"` |  |
 | jupyterhub.singleuser.extraEnv.RUCIO_RSE_MOUNT_PATH | string | `"/eos/eulake"` |  |
+| jupyterhub.singleuser.extraEnv.RUCIO_SERVER | string | `"https://vre-rucio.cern.ch"` |  |
 | jupyterhub.singleuser.extraEnv.RUCIO_SITE_NAME | string | `"CERN"` |  |
 | jupyterhub.singleuser.extraEnv.RUCIO_WEBUI_URL | string | `"https://vre-rucio-ui.cern.ch"` |  |
 | jupyterhub.singleuser.extraEnv.RUCIO_WILDCARD_ENABLED | string | `"1"` |  |
@@ -80,7 +82,7 @@ The Virtual Research Environment developed at CERN.>
 | jupyterhub.singleuser.image.tag | string | `"sha-281055c"` |  |
 | jupyterhub.singleuser.lifecycleHooks.postStart.exec.command[0] | string | `"sh"` |  |
 | jupyterhub.singleuser.lifecycleHooks.postStart.exec.command[1] | string | `"-c"` |  |
-| jupyterhub.singleuser.lifecycleHooks.postStart.exec.command[2] | string | `"if [ \"${SKIP_POSTSTART_HOOK}\" = \"true\" ]; then\n  echo \"hello world\";\nelse\n  mkdir -p /certs /tmp;\n  echo -n $RUCIO_ACCESS_TOKEN > /tmp/rucio_oauth.token;\n  echo -n \"oauth2:${EOS_ACCESS_TOKEN}:iam-escape.cloud.cnaf.infn.it/userinfo\" > /tmp/eos_oauth.token;\n  chmod 0600 /tmp/eos_oauth.token;\n  mkdir -p /opt/rucio/etc;\n  echo \"[client]\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"rucio_host = https://vre-rucio.cern.ch\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"auth_host = https://vre-rucio-auth.cern.ch\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"ca_cert = /certs/rucio_ca.pem\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"account = $JUPYTERHUB_USER\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"auth_type = oidc\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"oidc_audience = rucio\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"oidc_polling = true\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"oidc_issuer = escape\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"oidc_scope = openid profile offline_access\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"auth_token_file_path = /tmp/rucio_oauth.token\" >> /opt/rucio/etc/rucio.cfg;\nfi;\n"` |  |
+| jupyterhub.singleuser.lifecycleHooks.postStart.exec.command[2] | string | `"if [ \"${SKIP_POSTSTART_HOOK}\" = \"true\" ]; then\n  echo \"hello world\";\nelse\n  mkdir -p /certs /tmp;\n  echo -n $RUCIO_ACCESS_TOKEN > /tmp/rucio_oauth.token;\n  mkdir -p /opt/rucio/etc;\n  echo \"[client]\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"rucio_host = $RUCIO_HOST\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"auth_host = $RUCIO_AUTH_HOST\" >> /opt/rucio/etc/rucio.cfg;\n  #echo \"rucio_host = https://vre-rucio.cern.ch\" >> /opt/rucio/etc/rucio.cfg;\n  #echo \"auth_host = https://vre-rucio-auth.cern.ch\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"ca_cert = /certs/rucio_ca.pem\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"account = $JUPYTERHUB_USER\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"auth_type = oidc\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"oidc_audience = rucio\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"oidc_polling = true\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"oidc_issuer = escape\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"oidc_scope = openid profile offline_access\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"auth_token_file_path = /tmp/rucio_oauth.token\" >> /opt/rucio/etc/rucio.cfg;\nfi;\n"` |  |
 | jupyterhub.singleuser.networkPolicy.enabled | bool | `false` |  |
 | jupyterhub.singleuser.profileList[0].default | bool | `true` |  |
 | jupyterhub.singleuser.profileList[0].description | string | `"Based on a scipy notebook environment with a python-3.11 kernel, the rucio jupyterlab extension and the reana client installed."` |  |
@@ -130,8 +132,8 @@ The Virtual Research Environment developed at CERN.>
 | reana.reana_hostname | string | `"reana-vre.obsuks4.unige.ch"` |  |
 | reana.secrets.database.password | string | `nil` |  |
 | reana.secrets.database.user | string | `nil` |  |
-| reana.secrets.login.escape-iam.consumer_key | string | `"testkey"` |  |
-| reana.secrets.login.escape-iam.consumer_secret | string | `"testsecret"` |  |
+| reana.secrets.login.iam.consumer_key | string | `"testkey"` |  |
+| reana.secrets.login.iam.consumer_secret | string | `"testsecret"` |  |
 | reana.shared_storage.access_modes | string | `"ReadWriteMany"` |  |
 | reana.shared_storage.backend | string | `"nfs"` |  |
 | reana.shared_storage.volume_size | int | `1` |  |

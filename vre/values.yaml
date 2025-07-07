@@ -15,26 +15,27 @@ jupyterhub:
     db:
       #upgrade: true
       type: postgres # passed as s secret (dbconnect string) from the jhub-vre-db secret
-      url: #TODO: set through secret
+      url: # set through secret
     
     config:
       JupyterHub:
         authenticator_class: "generic-oauth"
       RucioAuthenticator:
-        # client_id: "" # TODO: set through secret
-        # client_secret: "" # TODO: set through secret
+        # client_id: "" # set through secret
+        # client_secret: "" #  set through secret
         authorize_url: https://iam-escape.cloud.cnaf.infn.it/authorize
         token_url: https://iam-escape.cloud.cnaf.infn.it/token
         userdata_url: https://iam-escape.cloud.cnaf.infn.it/userinfo
         oauth_callback_url: https://jhub-vre.obsuks4.unige.ch/hub/oauth_callback
         username_key: preferred_username
         enable_auth_state: true
-        allow_all: true
+        allow_all: true        
         scope:
           - openid
           - profile
           - email
 
+    
     extraConfig:
 
       token-exchange: |
@@ -89,6 +90,11 @@ jupyterhub:
     # TODO: revert!
     cloudMetadata:
       blockWithIptables: false 
+
+    extraEnv:        
+      RUCIO_AUTH_HOST: "https://vre-rucio-auth.cern.ch"
+      RUCIO_SERVER: "https://vre-rucio.cern.ch"      
+
     defaultUrl: "/lab"
     # The liefcycle hooks are used to create the Rucio configuration file,
     # and the token file by copying the REFRESH_TOKEN from the environment variable to the token file.
@@ -105,12 +111,12 @@ jupyterhub:
               else
                 mkdir -p /certs /tmp;
                 echo -n $RUCIO_ACCESS_TOKEN > /tmp/rucio_oauth.token;
-                echo -n "oauth2:${EOS_ACCESS_TOKEN}:iam-escape.cloud.cnaf.infn.it/userinfo" > /tmp/eos_oauth.token;
-                chmod 0600 /tmp/eos_oauth.token;
                 mkdir -p /opt/rucio/etc;
                 echo "[client]" >> /opt/rucio/etc/rucio.cfg;
-                echo "rucio_host = https://vre-rucio.cern.ch" >> /opt/rucio/etc/rucio.cfg;
-                echo "auth_host = https://vre-rucio-auth.cern.ch" >> /opt/rucio/etc/rucio.cfg;
+                echo "rucio_host = $RUCIO_HOST" >> /opt/rucio/etc/rucio.cfg;
+                echo "auth_host = $RUCIO_AUTH_HOST" >> /opt/rucio/etc/rucio.cfg;
+                #echo "rucio_host = https://vre-rucio.cern.ch" >> /opt/rucio/etc/rucio.cfg;
+                #echo "auth_host = https://vre-rucio-auth.cern.ch" >> /opt/rucio/etc/rucio.cfg;
                 echo "ca_cert = /certs/rucio_ca.pem" >> /opt/rucio/etc/rucio.cfg;
                 echo "account = $JUPYTERHUB_USER" >> /opt/rucio/etc/rucio.cfg;
                 echo "auth_type = oidc" >> /opt/rucio/etc/rucio.cfg;
@@ -241,7 +247,7 @@ reana:
 
   secrets:
     login:
-      escape-iam:
+      iam:
         # TODO: set this
         consumer_key: "testkey"
         consumer_secret: "testsecret"
