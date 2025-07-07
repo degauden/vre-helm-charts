@@ -1,3 +1,6 @@
+add kind cluster
+
+
 sync db from postgres
 
 to postinstall:
