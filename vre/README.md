@@ -10,7 +10,7 @@ The Virtual Research Environment developed at CERN.>
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| The maintainer name (required for each maintainer) | <The maintainers email (optional for each maintainer)> | <A URL for the maintainer (optional for each maintainer)> |
+| The maintainer name (required for each maintainer) | <etap@example.com> | <A URL for the maintainer (optional for each maintainer)> |
 
 ## Source Code
 

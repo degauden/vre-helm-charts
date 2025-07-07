@@ -41,7 +41,7 @@ dependencies:
 
 maintainers:
   - name: The maintainer name (required for each maintainer)
-    email: The maintainers email (optional for each maintainer)
+    email: etap@example.com
     url: A URL for the maintainer (optional for each maintainer)
 
 icon: https://vre-hub.github.io/img/favicon.ico
