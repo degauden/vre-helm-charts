@@ -20,8 +20,12 @@ The Virtual Research Environment developed at CERN.>
 
 | Repository | Name | Version |
 |------------|------|---------|
+| https://fluent.github.io/helm-charts | fluent-bit | 0.48.9 |
+| https://grafana.github.io/helm-charts | grafana | 9.2.2 |
+| https://grafana.github.io/helm-charts | loki | 6.30.1 |
 | https://hub.jupyter.org/helm-chart | jupyterhub | 3.3.7 |
 | https://kubernetes-sigs.github.io/nfs-ganesha-server-and-external-provisioner | nfs-server-provisioner | 1.8.0 |
+| https://prometheus-community.github.io/helm-charts | prometheus | 27.20.0 |
 | https://reanahub.github.io/reana | reana | 0.9.3 |
 | oci://registry-1.docker.io/bitnamicharts | postgresql | 16.5.1 |
 
@@ -29,6 +33,18 @@ The Virtual Research Environment developed at CERN.>
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| fluent-bit.config.inputs | string | `"[INPUT]\n    Name tail\n    Path /var/log/containers/*.log\n    multiline.parser docker, cri\n    Tag kube.*\n    Mem_Buf_Limit 5MB\n    Buffer_Chunk_Size 1\n    Refresh_Interval 1\n    Skip_Long_Lines On\n"` |  |
+| fluent-bit.config.outputs | string | `"[FILTER]\n    Name grep\n    Match *\n\n[OUTPUT]\n    Name        loki\n    Match       *\n    Host        dpps-loki-gateway\n    port        80\n    tls         off\n    tls.verify  off\n"` |  |
+| fluent-bit.config.rbac.create | bool | `true` |  |
+| fluent-bit.config.rbac.eventsAccess | bool | `true` |  |
+| fluent-bit.enabled | bool | `true` |  |
+| grafana.adminPassword | string | `"admin"` |  |
+| grafana.adminUser | string | `"admin"` |  |
+| grafana.enabled | bool | `true` |  |
+| grafana.persistentVolume.size | string | `"100Mi"` |  |
+| grafana.prometheus-node-exporter.enabled | bool | `false` |  |
+| grafana.retention | string | `"1d"` |  |
+| grafana.testFramework.enabled | bool | `false` |  |
 | jupyterhub.enabled | bool | `true` |  |
 | jupyterhub.hub.config.JupyterHub.authenticator_class | string | `"generic-oauth"` |  |
 | jupyterhub.hub.config.RucioAuthenticator.allow_all | bool | `true` |  |
@@ -90,6 +106,39 @@ The Virtual Research Environment developed at CERN.>
 | jupyterhub.singleuser.startTimeout | int | `1200` |  |
 | jupyterhub.singleuser.storage.extraVolumeMounts | list | `[]` |  |
 | jupyterhub.singleuser.storage.extraVolumes | list | `[]` |  |
+| loki.backend.replicas | int | `0` |  |
+| loki.bloomCompactor.replicas | int | `0` |  |
+| loki.bloomGateway.replicas | int | `0` |  |
+| loki.compactor.replicas | int | `0` |  |
+| loki.deploymentMode | string | `"SingleBinary"` |  |
+| loki.distributor.replicas | int | `0` |  |
+| loki.enabled | bool | `true` |  |
+| loki.indexGateway.replicas | int | `0` |  |
+| loki.ingester.replicas | int | `0` |  |
+| loki.loki.auth_enabled | bool | `false` |  |
+| loki.loki.commonConfig.replication_factor | int | `1` |  |
+| loki.loki.limits_config.allow_structured_metadata | bool | `true` |  |
+| loki.loki.limits_config.volume_enabled | bool | `true` |  |
+| loki.loki.pattern_ingester.enabled | bool | `true` |  |
+| loki.loki.ruler.enable_api | bool | `true` |  |
+| loki.loki.schemaConfig.configs[0].from | string | `"2024-04-01"` |  |
+| loki.loki.schemaConfig.configs[0].index.period | string | `"24h"` |  |
+| loki.loki.schemaConfig.configs[0].index.prefix | string | `"loki_index_"` |  |
+| loki.loki.schemaConfig.configs[0].object_store | string | `"s3"` |  |
+| loki.loki.schemaConfig.configs[0].schema | string | `"v13"` |  |
+| loki.loki.schemaConfig.configs[0].store | string | `"tsdb"` |  |
+| loki.minio.enabled | bool | `true` |  |
+| loki.monitoring.selfMonitoring.enabled | bool | `false` |  |
+| loki.monitoring.selfMonitoring.grafanaAgent.installOperator | bool | `false` |  |
+| loki.monitoring.selfMonitoring.lokiCanary.enabled | bool | `false` |  |
+| loki.querier.replicas | int | `0` |  |
+| loki.queryFrontend.replicas | int | `0` |  |
+| loki.queryScheduler.replicas | int | `0` |  |
+| loki.read.replicas | int | `0` |  |
+| loki.rollout_operator.enabled | bool | `false` |  |
+| loki.singleBinary.replicas | int | `1` |  |
+| loki.test.enabled | bool | `false` |  |
+| loki.write.replicas | int | `0` |  |
 | nfs-server-provisioner.enabled | bool | `true` |  |
 | nfs-server-provisioner.persistence.enabled | bool | `true` |  |
 | nfs-server-provisioner.persistence.size | string | `"100M"` |  |
@@ -102,6 +151,7 @@ The Virtual Research Environment developed at CERN.>
 | nfs-server-provisioner.tolerations[0].effect | string | `"NoSchedule"` |  |
 | nfs-server-provisioner.tolerations[0].key | string | `"CriticalAddonsOnly"` |  |
 | nfs-server-provisioner.tolerations[0].operator | string | `"Exists"` |  |
+| prometheus.enabled | bool | `true` |  |
 | reana.components.reana_db.enabled | bool | `false` |  |
 | reana.components.reana_server.environment.REANA_USER_EMAIL_CONFIRMATION | bool | `false` |  |
 | reana.components.reana_ui.enabled | bool | `true` |  |
