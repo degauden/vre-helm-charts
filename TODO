@@ -1,0 +1,9 @@
+sync db from postgres
+
+
+add ./scripts/create-database.sh to post-install
+
+./scripts/create-admin-user.sh  etap cern-vre volodymyr.savchenko@unige.ch tsdasdasd
+
+set vre-admin-access-token
+
