@@ -123,7 +123,7 @@ The Virtual Research Environment developed at CERN.>
 | reana.login[0].config.title | string | `"ESCAPE IAM"` |  |
 | reana.login[0].config.token_url | string | `"https://iam-escape.cloud.cnaf.infn.it/token"` |  |
 | reana.login[0].config.userinfo_url | string | `"https://iam-escape.cloud.cnaf.infn.it/userinfo"` |  |
-| reana.login[0].name | string | `"escape-iam"` |  |
+| reana.login[0].name | string | `"iam"` |  |
 | reana.login[0].type | string | `"keycloak"` |  |
 | reana.notifications.enabled | bool | `false` |  |
 | reana.postgres.enabled | bool | `true` |  |

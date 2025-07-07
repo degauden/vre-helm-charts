@@ -307,8 +307,9 @@ reana:
     # `[release-name]-db`
 
   login:
-    - name: "escape-iam"
+    - name: "iam"
       type: "keycloak"
+      # this is example, to be set on deployment
       config:
         title: "ESCAPE IAM"
         base_url: "https://iam-escape.cloud.cnaf.infn.it"
