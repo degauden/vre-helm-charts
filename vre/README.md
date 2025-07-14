@@ -27,12 +27,15 @@ The Virtual Research Environment developed at CERN.>
 | https://kubernetes-sigs.github.io/nfs-ganesha-server-and-external-provisioner | nfs-server-provisioner | 1.8.0 |
 | https://prometheus-community.github.io/helm-charts | prometheus | 27.20.0 |
 | https://reanahub.github.io/reana | reana | 0.9.3 |
-| oci://registry-1.docker.io/bitnamicharts | postgresql | 16.5.1 |
 
 ## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| bootstrap.enabled | bool | `true` |  |
+| bootstrap.image.pullPolicy | string | `"IfNotPresent"` |  |
+| bootstrap.image.repository | string | `"alpine/k8s"` |  |
+| bootstrap.image.tag | string | `"1.30.14"` |  |
 | fluent-bit.config.inputs | string | `"[INPUT]\n    Name tail\n    Path /var/log/containers/*.log\n    multiline.parser docker, cri\n    Tag kube.*\n    Mem_Buf_Limit 5MB\n    Buffer_Chunk_Size 1\n    Refresh_Interval 1\n    Skip_Long_Lines On\n"` |  |
 | fluent-bit.config.outputs | string | `"[FILTER]\n    Name grep\n    Match *\n\n[OUTPUT]\n    Name        loki\n    Match       *\n    Host        {{ .Release.Name }}-loki-gateway\n    port        80\n    tls         off\n    tls.verify  off\n"` |  |
 | fluent-bit.config.rbac.create | bool | `true` |  |
@@ -146,7 +149,7 @@ The Virtual Research Environment developed at CERN.>
 | nfs-server-provisioner.tolerations[0].key | string | `"CriticalAddonsOnly"` |  |
 | nfs-server-provisioner.tolerations[0].operator | string | `"Exists"` |  |
 | prometheus.enabled | bool | `true` |  |
-| reana.components.reana_db.enabled | bool | `false` |  |
+| reana.components.reana_db.enabled | bool | `true` |  |
 | reana.components.reana_server.environment.REANA_USER_EMAIL_CONFIRMATION | bool | `false` |  |
 | reana.components.reana_ui.enabled | bool | `true` |  |
 | reana.components.reana_ui.local_users | bool | `false` |  |
@@ -170,7 +173,6 @@ The Virtual Research Environment developed at CERN.>
 | reana.login[0].name | string | `"iam"` |  |
 | reana.login[0].type | string | `"keycloak"` |  |
 | reana.notifications.enabled | bool | `false` |  |
-| reana.postgres.enabled | bool | `true` |  |
 | reana.quota.default_cpu_limit | int | `36000000` |  |
 | reana.quota.default_disk_limit | int | `10737418240` |  |
 | reana.reana_hostname | string | `"reana-vre.obsuks4.unige.ch"` |  |

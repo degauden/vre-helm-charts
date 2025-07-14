@@ -1,3 +1,10 @@
+# Bootstrap configuration for the VRE Helm chart
+bootstrap:
+  enabled: true
+  image:
+    repository: alpine/k8s
+    tag: "1.30.14"
+    pullPolicy: IfNotPresent    
 
 jupyterhub:
   enabled: true
@@ -224,9 +231,6 @@ jupyterhub:
 reana:
   enabled: true
 
-  postgres:
-    enabled: true
-
   workspaces:
     retention_rules:
       maximum_period: forever
@@ -255,7 +259,7 @@ reana:
       enabled: true
       local_users: false
     reana_db:
-      enabled: false
+      enabled: true
     reana_server:
       environment:
         REANA_USER_EMAIL_CONFIRMATION: false
@@ -345,6 +349,7 @@ nfs-server-provisioner:
 
 
 # observability
+# note that updated reana also contains prometheus and grafana, but they are not enabled by default
 
 grafana:
   enabled: true
@@ -476,4 +481,5 @@ fluent-bit:
           port        80
           tls         off
           tls.verify  off
+
 

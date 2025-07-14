@@ -28,13 +28,17 @@ $ skaffold dev
 
 ## Configuration
 
-This is a list of configuration options one likely needs to set.
-For complete list of helm chart values, see chart [doc](vre/README.md). 
+For complete list of helm chart values, see chart [doc](vre/README.md). These values give a lot of flexibility allow to customize the chart.
 
-IAM instance:
+Some values almost certainly need to be set in every particular deployment. These values are provided in [vre/values-custom.yaml](vre/values-custom-example.yaml).
+
+## Manual bootstrap
+
+At the moment bootstrap is done in a job. It is only necessary to manually enable and configure users accounts, see [reana doc](https://docs.reana.io/administration/management/managing-users/).
 
 
-Rucio instance:
+## TODO
 
+rucio token expires before auth is gone. need to renew it
 
-### 
+Add kind cluster

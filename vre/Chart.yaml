@@ -21,11 +21,6 @@ dependencies:
     repository: https://reanahub.github.io/reana
     condition: reana.enabled
 
-  - name: postgresql
-    version: 16.5.1
-    repository: oci://registry-1.docker.io/bitnamicharts
-    condition: reana.postgres.enabled
-
   - name: nfs-server-provisioner
     condition: nfs-server-provisioner.enabled
     version: 1.8.0
