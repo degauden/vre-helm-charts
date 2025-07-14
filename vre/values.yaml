@@ -360,11 +360,6 @@ grafana:
   prometheus-node-exporter:
     enabled: false
 
-  adminUser: "admin"
-  adminPassword: "admin"
-
-  # ingress:
-  
 
 prometheus:
   enabled: true

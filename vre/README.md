@@ -38,8 +38,6 @@ The Virtual Research Environment developed at CERN.>
 | fluent-bit.config.rbac.create | bool | `true` |  |
 | fluent-bit.config.rbac.eventsAccess | bool | `true` |  |
 | fluent-bit.enabled | bool | `true` |  |
-| grafana.adminPassword | string | `"admin"` |  |
-| grafana.adminUser | string | `"admin"` |  |
 | grafana.enabled | bool | `true` |  |
 | grafana.persistentVolume.size | string | `"100Mi"` |  |
 | grafana.prometheus-node-exporter.enabled | bool | `false` |  |
