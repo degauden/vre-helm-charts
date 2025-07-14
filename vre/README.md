@@ -1,6 +1,6 @@
 # cern-vre
 
-![Version: 0.1.0-dev3](https://img.shields.io/badge/Version-0.1.0--dev3-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
+![Version: 0.1.0-dev4](https://img.shields.io/badge/Version-0.1.0--dev4-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
 
 The Virtual Research Environment developed at CERN.>
 
@@ -34,7 +34,7 @@ The Virtual Research Environment developed at CERN.>
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | fluent-bit.config.inputs | string | `"[INPUT]\n    Name tail\n    Path /var/log/containers/*.log\n    multiline.parser docker, cri\n    Tag kube.*\n    Mem_Buf_Limit 5MB\n    Buffer_Chunk_Size 1\n    Refresh_Interval 1\n    Skip_Long_Lines On\n"` |  |
-| fluent-bit.config.outputs | string | `"[FILTER]\n    Name grep\n    Match *\n\n[OUTPUT]\n    Name        loki\n    Match       *\n    Host        dpps-loki-gateway\n    port        80\n    tls         off\n    tls.verify  off\n"` |  |
+| fluent-bit.config.outputs | string | `"[FILTER]\n    Name grep\n    Match *\n\n[OUTPUT]\n    Name        loki\n    Match       *\n    Host        {{ .Release.Name }}-loki-gateway\n    port        80\n    tls         off\n    tls.verify  off\n"` |  |
 | fluent-bit.config.rbac.create | bool | `true` |  |
 | fluent-bit.config.rbac.eventsAccess | bool | `true` |  |
 | fluent-bit.enabled | bool | `true` |  |

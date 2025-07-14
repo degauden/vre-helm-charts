@@ -476,7 +476,7 @@ fluent-bit:
       [OUTPUT]
           Name        loki
           Match       *
-          Host        dpps-loki-gateway
+          Host        {{ .Release.Name }}-loki-gateway
           port        80
           tls         off
           tls.verify  off
