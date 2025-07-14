@@ -5,3 +5,9 @@ reana:
         # TODO: set this
         consumer_key: "testkey"
         consumer_secret: "testsecret"
+        
+nfs-server-provisioner:
+  enabled: true
+  persistence:
+    enabled: true
+    storageClass: standard
