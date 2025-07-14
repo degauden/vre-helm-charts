@@ -112,7 +112,7 @@ jupyterhub:
                 echo -n $RUCIO_ACCESS_TOKEN > /tmp/rucio_oauth.token;
                 mkdir -pv /opt/rucio/etc;
                 echo "[client]" >> /opt/rucio/etc/rucio.cfg;
-                echo "rucio_host = $RUCIO_HOST" >> /opt/rucio/etc/rucio.cfg;
+                echo "rucio_host = $RUCIO_BASE_URL" >> /opt/rucio/etc/rucio.cfg;
                 echo "auth_host = $RUCIO_AUTH_URL" >> /opt/rucio/etc/rucio.cfg;
                 echo "ca_cert = /certs/rucio_ca.pem" >> /opt/rucio/etc/rucio.cfg;
                 echo "account = $JUPYTERHUB_USER" >> /opt/rucio/etc/rucio.cfg;
@@ -363,6 +363,8 @@ grafana:
   adminUser: "admin"
   adminPassword: "admin"
 
+  # ingress:
+  
 
 prometheus:
   enabled: true
