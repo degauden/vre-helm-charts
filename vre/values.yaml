@@ -106,17 +106,16 @@ jupyterhub:
             - "sh"
             - "-c"
             - |
+              set -x
               if [ "${SKIP_POSTSTART_HOOK}" = "true" ]; then
                 echo "hello world";
               else
-                mkdir -p /certs /tmp;
+                mkdir -pv /certs /tmp;
                 echo -n $RUCIO_ACCESS_TOKEN > /tmp/rucio_oauth.token;
-                mkdir -p /opt/rucio/etc;
+                mkdir -pv /opt/rucio/etc;
                 echo "[client]" >> /opt/rucio/etc/rucio.cfg;
                 echo "rucio_host = $RUCIO_HOST" >> /opt/rucio/etc/rucio.cfg;
                 echo "auth_host = $RUCIO_AUTH_HOST" >> /opt/rucio/etc/rucio.cfg;
-                #echo "rucio_host = https://vre-rucio.cern.ch" >> /opt/rucio/etc/rucio.cfg;
-                #echo "auth_host = https://vre-rucio-auth.cern.ch" >> /opt/rucio/etc/rucio.cfg;
                 echo "ca_cert = /certs/rucio_ca.pem" >> /opt/rucio/etc/rucio.cfg;
                 echo "account = $JUPYTERHUB_USER" >> /opt/rucio/etc/rucio.cfg;
                 echo "auth_type = oidc" >> /opt/rucio/etc/rucio.cfg;
@@ -222,10 +221,8 @@ jupyterhub:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.tls: "true"
       #cert-manager.io/cluster-issuer: "letsencrypt" # this issues a certificate for the domain through cert-manager automatically
-    hosts:
+    hosts: []
       # TODO: vre chart value
-      - jhub-vre.obsuks4.unige.ch
-      - jhub-vre-etap.obsuks4.unige.ch
                
 reana:
   enabled: true

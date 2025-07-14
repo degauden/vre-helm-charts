@@ -9,3 +9,4 @@ to postinstall:
 
 set vre-admin-access-token
 
+rucio token expires before auth is gone. need to renew it

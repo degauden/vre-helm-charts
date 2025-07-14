@@ -28,6 +28,13 @@ $ skaffold dev
 
 ## Configuration
 
-For complete list of helm chart values, see chart [doc](vre/README.md).
+This is a list of configuration options one likely needs to set.
+For complete list of helm chart values, see chart [doc](vre/README.md). 
+
+IAM instance:
+
+
+Rucio instance:
+
 
 ### 
