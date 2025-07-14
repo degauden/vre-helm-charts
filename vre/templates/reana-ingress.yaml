@@ -10,7 +10,7 @@ metadata:
     traefik.frontend.entryPoints: http,https
   name: {{ .Release.Name }}-reana-ingress
 spec:
-  ingressClassName: traefik
+  +  ingressClassName: {{ .Values.reana.ingress.ingressClassName }}
   tls:
   - secretName: cert-manager-tls-ingress-secret-reana
     hosts:
