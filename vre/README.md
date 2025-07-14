@@ -73,7 +73,6 @@ The Virtual Research Environment developed at CERN.>
 | jupyterhub.singleuser.extraEnv.OAUTH2_TOKEN | string | `"FILE:/tmp/eos_oauth.token"` |  |
 | jupyterhub.singleuser.extraEnv.RUCIO_AUTH_URL | string | `"https://vre-rucio-auth.cern.ch"` |  |
 | jupyterhub.singleuser.extraEnv.RUCIO_BASE_URL | string | `"https://vre-rucio.cern.ch"` |  |
-| jupyterhub.singleuser.extraEnv.RUCIO_CA_CERT | string | `"/certs/rucio_ca.pem"` |  |
 | jupyterhub.singleuser.extraEnv.RUCIO_DEFAULT_AUTH_TYPE | string | `"oidc"` |  |
 | jupyterhub.singleuser.extraEnv.RUCIO_DEFAULT_INSTANCE | string | `"vre-rucio.cern.ch"` |  |
 | jupyterhub.singleuser.extraEnv.RUCIO_DESTINATION_RSE | string | `"CERN-EOSPILOT"` |  |
@@ -93,7 +92,7 @@ The Virtual Research Environment developed at CERN.>
 | jupyterhub.singleuser.image.tag | string | `"sha-281055c"` |  |
 | jupyterhub.singleuser.lifecycleHooks.postStart.exec.command[0] | string | `"sh"` |  |
 | jupyterhub.singleuser.lifecycleHooks.postStart.exec.command[1] | string | `"-c"` |  |
-| jupyterhub.singleuser.lifecycleHooks.postStart.exec.command[2] | string | `"set -x\nif [ \"${SKIP_POSTSTART_HOOK}\" = \"true\" ]; then\n  echo \"hello world\";\nelse\n  mkdir -pv /certs /tmp;\n  echo -n $RUCIO_ACCESS_TOKEN > /tmp/rucio_oauth.token;\n  mkdir -pv /opt/rucio/etc;\n  echo \"[client]\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"rucio_host = $RUCIO_BASE_URL\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"auth_host = $RUCIO_AUTH_URL\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"ca_cert = /certs/rucio_ca.pem\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"account = $JUPYTERHUB_USER\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"auth_type = oidc\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"oidc_audience = rucio\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"oidc_polling = true\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"oidc_issuer = escape\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"oidc_scope = openid profile offline_access\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"auth_token_file_path = /tmp/rucio_oauth.token\" >> /opt/rucio/etc/rucio.cfg;\nfi;\n"` |  |
+| jupyterhub.singleuser.lifecycleHooks.postStart.exec.command[2] | string | `"set -x\nif [ \"${SKIP_POSTSTART_HOOK}\" = \"true\" ]; then\n  echo \"hello world\";\nelse\n  mkdir -pv /certs /tmp;\n  echo -n $RUCIO_ACCESS_TOKEN > /tmp/rucio_oauth.token;\n  mkdir -pv /opt/rucio/etc;\n  echo \"[client]\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"rucio_host = $RUCIO_BASE_URL\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"auth_host = $RUCIO_AUTH_URL\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"account = $JUPYTERHUB_USER\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"auth_type = oidc\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"oidc_audience = rucio\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"oidc_polling = true\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"oidc_issuer = escape\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"oidc_scope = openid profile offline_access\" >> /opt/rucio/etc/rucio.cfg;\n  echo \"auth_token_file_path = /tmp/rucio_oauth.token\" >> /opt/rucio/etc/rucio.cfg;\nfi;\n"` |  |
 | jupyterhub.singleuser.networkPolicy.enabled | bool | `false` |  |
 | jupyterhub.singleuser.profileList[0].default | bool | `true` |  |
 | jupyterhub.singleuser.profileList[0].description | string | `"Based on a scipy notebook environment with a python-3.11 kernel, the rucio jupyterlab extension and the reana client installed."` |  |

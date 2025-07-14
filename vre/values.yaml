@@ -114,7 +114,6 @@ jupyterhub:
                 echo "[client]" >> /opt/rucio/etc/rucio.cfg;
                 echo "rucio_host = $RUCIO_BASE_URL" >> /opt/rucio/etc/rucio.cfg;
                 echo "auth_host = $RUCIO_AUTH_URL" >> /opt/rucio/etc/rucio.cfg;
-                echo "ca_cert = /certs/rucio_ca.pem" >> /opt/rucio/etc/rucio.cfg;
                 echo "account = $JUPYTERHUB_USER" >> /opt/rucio/etc/rucio.cfg;
                 echo "auth_type = oidc" >> /opt/rucio/etc/rucio.cfg;
                 echo "oidc_audience = rucio" >> /opt/rucio/etc/rucio.cfg;
@@ -195,7 +194,7 @@ jupyterhub:
       RUCIO_DESTINATION_RSE: "CERN-EOSPILOT"
       RUCIO_RSE_MOUNT_PATH: "/eos/eulake"
       RUCIO_PATH_BEGINS_AT: "5" # because we are need to substitute /eos/pilot/eulake/escape/data with /eos/eulake
-      RUCIO_CA_CERT: "/certs/rucio_ca.pem"
+      #RUCIO_CA_CERT: "/certs/rucio_ca.pem"
       OAUTH2_TOKEN: "FILE:/tmp/eos_oauth.token"
 
     # extraFiles:
