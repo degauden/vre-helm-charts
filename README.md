@@ -26,4 +26,8 @@ $ skaffold dev
 ```
 
 
+## Configuration
+
+For complete list of helm chart values, see chart [doc](vre/README.md).
+
 ### 
