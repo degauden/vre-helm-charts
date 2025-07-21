@@ -151,7 +151,7 @@ The Virtual Research Environment developed at CERN.>
 | nfs-server-provisioner.tolerations[0].effect | string | `"NoSchedule"` |  |
 | nfs-server-provisioner.tolerations[0].key | string | `"CriticalAddonsOnly"` |  |
 | nfs-server-provisioner.tolerations[0].operator | string | `"Exists"` |  |
-| prometheus.enabled | bool | `true` |  |
+| prometheus.enabled | bool | `false` |  |
 | reana.components.reana_db.enabled | bool | `true` |  |
 | reana.components.reana_server.environment.REANA_USER_EMAIL_CONFIRMATION | bool | `false` |  |
 | reana.components.reana_ui.enabled | bool | `true` |  |
@@ -180,6 +180,8 @@ The Virtual Research Environment developed at CERN.>
 | reana.quota.default_cpu_limit | int | `36000000` |  |
 | reana.quota.default_disk_limit | int | `10737418240` |  |
 | reana.reana_hostname | string | `"reana-vre.obsuks4.unige.ch"` |  |
+| reana.reana_workflow_controller.image | string | `"docker.io/volodymyrsavchenko/reana-workflow-controller:latest"` |  |
+| reana.reana_workflow_controller.imagePullPolicy | string | `"IfNotPresent"` |  |
 | reana.secrets.database.password | string | `nil` |  |
 | reana.secrets.database.user | string | `nil` |  |
 | reana.secrets.login.iam.consumer_key | string | `"testkey"` |  |
