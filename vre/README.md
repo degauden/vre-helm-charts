@@ -26,7 +26,7 @@ The Virtual Research Environment developed at CERN.>
 | https://hub.jupyter.org/helm-chart | jupyterhub | 3.3.7 |
 | https://kubernetes-sigs.github.io/nfs-ganesha-server-and-external-provisioner | nfs-server-provisioner | 1.8.0 |
 | https://prometheus-community.github.io/helm-charts | prometheus | 27.20.0 |
-| https://volodymyrss.github.io/reana | reana | 0.95.0-alpha.2 |
+| https://reanahub.github.io/reana | reana | 0.9.3 |
 
 ## Values
 
