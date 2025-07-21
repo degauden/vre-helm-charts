@@ -9,6 +9,29 @@ spec:
     spec:
       restartPolicy: Never
       serviceAccountName: {{ include "cern-vre.fullname" . }}-bootstrap-sa
+      initContainers:
+      - name: wait-for-db
+        image: "{{ .Values.bootstrap.initImage.repository }}:{{ .Values.bootstrap.initImage.tag }}"
+        imagePullPolicy: {{ .Values.bootstrap.initImage.pullPolicy }}
+        command: ["/bin/sh", "-c"]
+        env:
+        - name: PGPASSWORD
+          value: "{{ .Values.reana.secrets.database.password }}"
+        - name: PGUSER
+          value: "{{ .Values.reana.secrets.database.user }}"
+        args:
+        - |
+          set -ex
+          echo "Waiting for REANA database to be ready..."
+          instance_name={{ include "cern-vre.fullname" . }}
+
+          while ! psql -h "${instance_name}-db" -d reana -c "SELECT 1"; do
+                echo "Waiting for REANA database to be ready..."
+                sleep 5
+          done
+
+          echo "REANA database is ready." 
+
       containers:
       - name: bootstrap
         image: "{{ .Values.bootstrap.image.repository }}:{{ .Values.bootstrap.image.tag }}"
@@ -24,6 +47,7 @@ spec:
           admin_email={{ .Values.bootstrap.adminEmail | default "admin@example.com" }}
           admin_password={{ .Values.bootstrap.adminPassword }}
 
+          
           kubectl exec -it deployment/${instance_name}-server  -- ./scripts/create-database.sh || echo "Database already exists, skipping creation."
 
           # Create admin user

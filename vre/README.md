@@ -36,6 +36,9 @@ The Virtual Research Environment developed at CERN.>
 | bootstrap.image.pullPolicy | string | `"IfNotPresent"` |  |
 | bootstrap.image.repository | string | `"alpine/k8s"` |  |
 | bootstrap.image.tag | string | `"1.30.14"` |  |
+| bootstrap.initImage.pullPolicy | string | `"IfNotPresent"` |  |
+| bootstrap.initImage.repository | string | `"postgres"` |  |
+| bootstrap.initImage.tag | string | `"17.5"` |  |
 | fluent-bit.config.inputs | string | `"[INPUT]\n    Name tail\n    Path /var/log/containers/*.log\n    multiline.parser docker, cri\n    Tag kube.*\n    Mem_Buf_Limit 5MB\n    Buffer_Chunk_Size 1\n    Refresh_Interval 1\n    Skip_Long_Lines On\n"` |  |
 | fluent-bit.config.outputs | string | `"[FILTER]\n    Name grep\n    Match *\n\n[OUTPUT]\n    Name        loki\n    Match       *\n    Host        {{ .Release.Name }}-loki-gateway\n    port        80\n    tls         off\n    tls.verify  off\n"` |  |
 | fluent-bit.config.rbac.create | bool | `true` |  |
@@ -161,6 +164,7 @@ The Virtual Research Environment developed at CERN.>
 | reana.db_env_config.REANA_DB_HOST | string | `"postgres-postgresql"` |  |
 | reana.db_env_config.REANA_DB_NAME | string | `"postgres"` |  |
 | reana.db_env_config.REANA_DB_PORT | string | `"5432"` |  |
+| reana.debug.enabled | bool | `false` |  |
 | reana.enabled | bool | `true` |  |
 | reana.ingress.enabled | bool | `false` |  |
 | reana.ingress_override | bool | `true` |  |
