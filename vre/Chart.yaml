@@ -17,8 +17,10 @@ dependencies:
     condition: jupyterhub.enabled
 
   - name: reana
-    version: 0.9.3
-    repository: https://reanahub.github.io/reana
+    version: 0.95.0-alpha.2
+      #version: 0.9.3
+    repository: https://volodymyrss.github.io/reana
+    #repository: https://reanahub.github.io/reana
     condition: reana.enabled
 
   - name: nfs-server-provisioner
