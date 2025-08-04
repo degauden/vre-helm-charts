@@ -4,6 +4,20 @@ metadata:
   name: cern-vre
 deploy:
   helm:
+    hooks:
+      before:
+        - host:
+            command:
+            - sh
+            - -c
+            - |
+              if kubectl cluster-info; then
+                echo "found k8s cluster, will install in it";
+              else
+                echo "found NO k8s cluster, will create one with kind. If that's not what you want, please interrupt this command make sure a k8s cluster is accessible before running skaffold";
+                kind create cluster
+                sleep 1
+              fi
     releases:
       - name: cern-vre
         chartPath: vre
