@@ -465,7 +465,7 @@ loki:
 
 
 fluent-bit:
-  enabled: true
+  enabled: false
   config:
     rbac:
       create: true

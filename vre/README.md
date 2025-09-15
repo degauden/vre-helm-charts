@@ -1,6 +1,6 @@
 # cern-vre
 
-![Version: 0.1.0-dev20](https://img.shields.io/badge/Version-0.1.0--dev20-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
+![Version: 0.1.0-dev21](https://img.shields.io/badge/Version-0.1.0--dev21-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
 
 The Virtual Research Environment developed at CERN.>
 
@@ -43,7 +43,7 @@ The Virtual Research Environment developed at CERN.>
 | fluent-bit.config.outputs | string | `"[FILTER]\n    Name grep\n    Match *\n\n[OUTPUT]\n    Name        loki\n    Match       *\n    Host        {{ .Release.Name }}-loki-gateway\n    port        80\n    tls         off\n    tls.verify  off\n"` |  |
 | fluent-bit.config.rbac.create | bool | `true` |  |
 | fluent-bit.config.rbac.eventsAccess | bool | `true` |  |
-| fluent-bit.enabled | bool | `true` |  |
+| fluent-bit.enabled | bool | `false` |  |
 | grafana.enabled | bool | `true` |  |
 | grafana.persistentVolume.size | string | `"100Mi"` |  |
 | grafana.prometheus-node-exporter.enabled | bool | `false` |  |
