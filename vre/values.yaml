@@ -340,6 +340,8 @@ reana:
     imagePullPolicy: IfNotPresent
     image: docker.io/volodymyrsavchenko/reana-workflow-controller:latest
 
+  fluent-bit:
+    enabled: false
 
 nfs-server-provisioner:
   enabled: true

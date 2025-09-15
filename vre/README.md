@@ -1,6 +1,6 @@
 # cern-vre
 
-![Version: 0.1.0-dev21](https://img.shields.io/badge/Version-0.1.0--dev21-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
+![Version: 0.1.0-dev22](https://img.shields.io/badge/Version-0.1.0--dev22-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
 
 The Virtual Research Environment developed at CERN.>
 
@@ -166,6 +166,7 @@ The Virtual Research Environment developed at CERN.>
 | reana.db_env_config.REANA_DB_PORT | string | `"5432"` |  |
 | reana.debug.enabled | bool | `false` |  |
 | reana.enabled | bool | `true` |  |
+| reana.fluent-bit.enabled | bool | `false` |  |
 | reana.ingress.enabled | bool | `false` |  |
 | reana.ingress_override | bool | `true` |  |
 | reana.login[0].config.auth_url | string | `"https://iam-escape.cloud.cnaf.infn.it/authorize"` |  |

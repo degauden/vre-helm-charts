@@ -1,6 +1,6 @@
 apiVersion: v2
 name: cern-vre
-version: 0.1.0-dev21
+version: 0.1.0-dev22
 description: The Virtual Research Environment developed at CERN.>
 keywords:
   - jupyterhub
@@ -49,6 +49,7 @@ dependencies:
 
   - name: fluent-bit
     version: 0.48.9
+    condition: fluent-bit.enabled
     repository: https://fluent.github.io/helm-charts
 
   # TODO: eventually add an integrated rucio chart, https://github.com/rucio/helm-charts/pull/217
