@@ -18,9 +18,9 @@ dependencies:
 
   - name: reana
     #version: 0.95.0-alpha.2
-    version: 0.9.3
+    version: 0.9.4
     #repository: https://volodymyrss.github.io/reana
-    uepository: https://reanahub.github.io/reana
+    repository: https://reanahub.github.io/reana
     condition: reana.enabled
 
   - name: nfs-server-provisioner
