@@ -1,6 +1,6 @@
 # cern-vre
 
-![Version: 0.1.0-dev12](https://img.shields.io/badge/Version-0.1.0--dev12-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
+![Version: 0.1.0-dev16](https://img.shields.io/badge/Version-0.1.0--dev16-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
 
 The Virtual Research Environment developed at CERN.>
 
@@ -20,13 +20,13 @@ The Virtual Research Environment developed at CERN.>
 
 | Repository | Name | Version |
 |------------|------|---------|
+|  | reana | 0.9.3 |
 | https://fluent.github.io/helm-charts | fluent-bit | 0.48.9 |
 | https://grafana.github.io/helm-charts | grafana | 9.2.2 |
 | https://grafana.github.io/helm-charts | loki | 6.30.1 |
 | https://hub.jupyter.org/helm-chart | jupyterhub | 3.3.7 |
 | https://kubernetes-sigs.github.io/nfs-ganesha-server-and-external-provisioner | nfs-server-provisioner | 1.8.0 |
 | https://prometheus-community.github.io/helm-charts | prometheus | 27.20.0 |
-| https://volodymyrss.github.io/reana | reana | 0.95.0-alpha.2 |
 
 ## Values
 
