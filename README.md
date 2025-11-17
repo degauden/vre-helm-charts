@@ -120,6 +120,23 @@ For complete list of helm chart values, see chart [doc](vre/README.md). These va
 
 Some values almost certainly need to be set in every particular deployment. These values are provided in [vre/values-custom.yaml](vre/values-custom-example.yaml).
 
+## Troubleshooting
+
+
+### NFS mount error
+
+If you see an error like this in pod events:
+
+```
+  Warning  FailedMount       98s (x20 over 26m)  kubelet            MountVolume.SetUp failed for volume "pvc-...." : mount failed: exit status 32
+Mounting command: mount
+Mounting arguments: -t nfs -o nfsvers=4.1,retrans=2,tcp,timeo=30 10.XX.XX.XX:/exported/path /var/lib/kubelet/pods/86be9a70-3267-4861-8bbd-7c02f18b3532/volumes/kubernetes.io~nfs/pvc-...
+Output: mount: /var/lib/kubelet/pods/.../volumes/kubernetes.io~nfs/pvc-....: bad option; for several filesystems (e.g. nfs, cifs) you might need a /sbin/mount.<type> helper program.
+```
+
+This means that NFS client utilities are not installed on your nodes. To fix this, install `nfs-common` package (on Debian-based systems) or equivalent for your OS on all nodes.
+
+
 ## Known issues
 
 * rucio token expires before login to jupyterlab. It means that sometimes it is possible to access jupyterhub but not start session (which relies on token exchange). If you find yourself in this situation, try to relogin to jupyterhub, it is likely to fix the issue.
