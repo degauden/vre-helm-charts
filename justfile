@@ -25,7 +25,7 @@ set-version:
         VERSION="$GIT_VERSION"
     else
         # No tags found, use commit SHA with build metadata
-        VERSION="0.1.0+dev.${GIT_VERSION}"
+        VERSION="0.1.0-dev${GIT_VERSION}"
     fi
 
     echo "Git version: $GIT_VERSION"
