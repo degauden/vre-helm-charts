@@ -17,12 +17,16 @@ dependencies:
     condition: jupyterhub.enabled
 
   - name: reana
-    #version: 0.95.0-alpha.2-6-g970d4b7
-    #version: 0.95.0-alpha.2
-    #version: 0.9.4
+    # for the latest alpha version, not working with indigo IAM
+    # version: 0.95.0-alpha.2          
+
+    # this is the latest stable version, has an issue with debug mode
+    # version: 0.9.4
+    # repository: https://reanahub.github.io/reana
+    
+    # this is a version working with indigo IAM and debug mode
     version: 0.9.4-1-gcd7dcb3
     repository: https://volodymyrss.github.io/reana
-    #repository: https://reanahub.github.io/reana
     condition: reana.enabled
 
   - name: nfs-server-provisioner
