@@ -1,32 +1,32 @@
-# {{ include "cern-vre.fullname" . }}-bootstrap-sa sa allowed to do all operations. not amazon specific
+# {{ include "escape-vre.fullname" . }}-bootstrap-sa sa allowed to do all operations. not amazon specific
 
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{ include "cern-vre.fullname" . }}-bootstrap-sa
+  name: {{ include "escape-vre.fullname" . }}-bootstrap-sa
 ---
-# {{ include "cern-vre.fullname" . }}-bootstrap-role
+# {{ include "escape-vre.fullname" . }}-bootstrap-role
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: {{ include "cern-vre.fullname" . }}-bootstrap-role
+  name: {{ include "escape-vre.fullname" . }}-bootstrap-role
 rules:
 - apiGroups: ["*"]
   resources: ["*"]
   verbs: ["*"]
 ---
-# {{ include "cern-vre.fullname" . }}-bootstrap-role-binding
+# {{ include "escape-vre.fullname" . }}-bootstrap-role-binding
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ include "cern-vre.fullname" . }}-bootstrap-role-binding
+  name: {{ include "escape-vre.fullname" . }}-bootstrap-role-binding
 subjects:
 - kind: ServiceAccount
-  name: {{ include "cern-vre.fullname" . }}-bootstrap-sa
+  name: {{ include "escape-vre.fullname" . }}-bootstrap-sa
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role
-  name: {{ include "cern-vre.fullname" . }}-bootstrap-role
+  name: {{ include "escape-vre.fullname" . }}-bootstrap-role
   apiGroup: rbac.authorization.k8s.io
   
   

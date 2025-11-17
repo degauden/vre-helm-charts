@@ -1,11 +1,11 @@
 apiVersion: skaffold/v4beta12
 kind: Config
 metadata:
-  name: cern-vre
+  name: escape-vre
 deploy:
   helm:
     releases:
-      - name: cern-vre
+      - name: escape-vre
         chartPath: vre
         valuesFiles:
          - vre/values.yaml

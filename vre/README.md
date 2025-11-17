@@ -1,4 +1,4 @@
-# cern-vre
+# escape-vre
 
 ![Version: 0.1.0-dev24](https://img.shields.io/badge/Version-0.1.0--dev24-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
 
@@ -150,7 +150,7 @@ The Virtual Research Environment developed at CERN.
 | nfs-server-provisioner.storageClass.mountOptions[1] | string | `"nfsvers=4.1"` |  |
 | nfs-server-provisioner.storageClass.mountOptions[2] | string | `"retrans=2"` |  |
 | nfs-server-provisioner.storageClass.mountOptions[3] | string | `"timeo=30"` |  |
-| nfs-server-provisioner.storageClass.name | string | `"cern-vre-shared-volume-storage-class"` |  |
+| nfs-server-provisioner.storageClass.name | string | `"escape-vre-shared-volume-storage-class"` |  |
 | nfs-server-provisioner.tolerations[0].effect | string | `"NoSchedule"` |  |
 | nfs-server-provisioner.tolerations[0].key | string | `"CriticalAddonsOnly"` |  |
 | nfs-server-provisioner.tolerations[0].operator | string | `"Exists"` |  |

@@ -1,5 +1,5 @@
 apiVersion: v2
-name: cern-vre
+name: escape-vre
 version: 0.1.0-dev24
 description: The Virtual Research Environment developed at CERN.
 keywords:

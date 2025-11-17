@@ -3,12 +3,12 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "cern-vre.fullname" . }}-bootstrap-{{ .Release.Revision }}
+  name: {{ include "escape-vre.fullname" . }}-bootstrap-{{ .Release.Revision }}
 spec:
   template:
     spec:
       restartPolicy: Never
-      serviceAccountName: {{ include "cern-vre.fullname" . }}-bootstrap-sa
+      serviceAccountName: {{ include "escape-vre.fullname" . }}-bootstrap-sa
       initContainers:
       - name: wait-for-db
         image: "{{ .Values.bootstrap.initImage.repository }}:{{ .Values.bootstrap.initImage.tag }}"
@@ -23,7 +23,7 @@ spec:
         - |
           set -ex
           echo "Waiting for REANA database to be ready..."
-          instance_name={{ include "cern-vre.fullname" . }}
+          instance_name={{ include "escape-vre.fullname" . }}
 
           while ! psql -h "${instance_name}-db" -d reana -c "SELECT 1"; do
                 echo "Waiting for REANA database to be ready..."
@@ -43,7 +43,7 @@ spec:
           echo "Bootstrapping REANA..."
           
           kubernetes_namespace={{ .Release.Namespace }}
-          instance_name={{ include "cern-vre.fullname" . }}
+          instance_name={{ include "escape-vre.fullname" . }}
           admin_email={{ .Values.bootstrap.adminEmail | default "admin@example.com" }}
           admin_password={{ .Values.bootstrap.adminPassword }}
 

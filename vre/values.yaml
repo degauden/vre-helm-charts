@@ -353,7 +353,7 @@ nfs-server-provisioner:
     size: 100M
   storageClass:
 
-    name: cern-vre-shared-volume-storage-class
+    name: escape-vre-shared-volume-storage-class
     # name: reana-infrastructure-volume-storage-class
     mountOptions:
     - tcp
