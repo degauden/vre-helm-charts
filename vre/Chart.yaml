@@ -1,6 +1,6 @@
 apiVersion: v2
 name: escape-vre
-version: 0.1.0-devd9e2b35
+version: 0.1.0-devf886163
 description: The Virtual Research Environment developed at CERN.
 keywords:
   - jupyterhub
