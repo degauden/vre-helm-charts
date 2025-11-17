@@ -1,5 +1,29 @@
 # VRE Helm charts repository
 
+## Installation
+
+The ESCAPE VRE Helm chart is published to GitHub Pages and can be installed from the chart repository:
+
+```bash
+# Add the VRE Helm chart repository
+helm repo add vre-helm-charts https://vre-hub.github.io/vre-helm-charts
+
+# Update your local Helm chart repository cache
+helm repo update
+
+# Install the chart
+helm install my-vre vre-helm-charts/escape-vre
+
+# Or install with custom values
+helm install my-vre vre-helm-charts/escape-vre -f values-custom.yaml
+```
+
+To search for available chart versions:
+
+```bash
+helm search repo vre-helm-charts/escape-vre --versions
+```
+
 ## Testing locally
 
 
