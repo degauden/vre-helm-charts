@@ -51,4 +51,54 @@ entries:
     urls:
     - https://github.com/vre-hub/helm-charts/releases/download/escape-vre-0.1.0-dev24/escape-vre-0.1.0-dev24.tgz
     version: 0.1.0-dev24
-generated: "2025-11-17T18:58:34.913464706Z"
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-11-17T19:20:04.571794751Z"
+    dependencies:
+    - condition: jupyterhub.enabled
+      name: jupyterhub
+      repository: https://hub.jupyter.org/helm-chart
+      version: 3.3.7
+    - condition: reana.enabled
+      name: reana
+      repository: https://volodymyrss.github.io/reana
+      version: 0.9.4-1-gcd7dcb3
+    - condition: nfs-server-provisioner.enabled
+      name: nfs-server-provisioner
+      repository: https://kubernetes-sigs.github.io/nfs-ganesha-server-and-external-provisioner
+      version: 1.8.0
+    - condition: grafana.enabled
+      name: grafana
+      repository: https://grafana.github.io/helm-charts
+      version: 9.2.2
+    - condition: prometheus.enabled
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 27.20.0
+    - condition: loki.enabled
+      name: loki
+      repository: https://grafana.github.io/helm-charts
+      version: 6.30.1
+    - condition: fluent-bit.enabled
+      name: fluent-bit
+      repository: https://fluent.github.io/helm-charts
+      version: 0.48.9
+    description: The Virtual Research Environment developed at CERN.
+    digest: a129713c17625dd52b0c85745f63d9a05fbab4601360137b73507d47e2b37396
+    home: https://vre-hub.github.io
+    icon: https://vre-hub.github.io/img/favicon.ico
+    keywords:
+    - jupyterhub
+    - rucio
+    - reana
+    maintainers:
+    - email: vre-team@example.com
+      name: VRE Team
+      url: https://vre-hub.github.io
+    name: escape-vre
+    sources:
+    - https://github.com/vre-hub/vre
+    urls:
+    - https://github.com/vre-hub/helm-charts/releases/download/escape-vre-0.1.0-cc1a9ee/escape-vre-0.1.0-cc1a9ee.tgz
+    version: 0.1.0-cc1a9ee
+generated: "2025-11-17T19:20:04.571812033Z"
