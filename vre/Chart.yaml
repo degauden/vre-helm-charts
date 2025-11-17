@@ -29,8 +29,6 @@ dependencies:
     condition: nfs-server-provisioner.enabled
     version: 1.8.0
     repository: https://kubernetes-sigs.github.io/nfs-ganesha-server-and-external-provisioner
-
-  # TODO: add prometheus and grafana
   
   - name: grafana
     condition: grafana.enabled
@@ -52,19 +50,11 @@ dependencies:
     condition: fluent-bit.enabled
     repository: https://fluent.github.io/helm-charts
 
-  # TODO: eventually add an integrated rucio chart, https://github.com/rucio/helm-charts/pull/217
-  # - name: rucio
-  #   version:
-  #   repository:
-  #   condition: rucio.enabled
-  #
-  #
-
 
 maintainers:
-  - name: The maintainer name (required for each maintainer)
-    email: etap@example.com
-    url: A URL for the maintainer (optional for each maintainer)
+  - name: VRE Team
+    email: vre-team@example.com
+    url: https://vre-hub.github.io
 
 icon: https://vre-hub.github.io/img/favicon.ico
 appVersion: 0.1.0

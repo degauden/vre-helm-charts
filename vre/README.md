@@ -10,7 +10,7 @@ The Virtual Research Environment developed at CERN.>
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| The maintainer name (required for each maintainer) | <etap@example.com> | <A URL for the maintainer (optional for each maintainer)> |
+| VRE Team | <vre-team@example.com> | <https://vre-hub.github.io> |
 
 ## Source Code
 
@@ -66,6 +66,9 @@ The Virtual Research Environment developed at CERN.>
 | jupyterhub.hub.extraConfig.token-exchange | string | `"import pprint\nimport os\nimport warnings\nimport requests\nfrom oauthenticator.generic import GenericOAuthenticator\n\n# custom authenticator to enable auth_state and get access token to set as env var for rucio extension\nclass RucioAuthenticator(GenericOAuthenticator):\n    def __init__(self, **kwargs):\n        super().__init__(**kwargs)\n        self.enable_auth_state = True\n\n    def exchange_token(self, token):\n        params = {\n            'client_id': self.client_id,\n            'client_secret': self.client_secret,\n            'grant_type': 'urn:ietf:params:oauth:grant-type:token-exchange',\n            'subject_token_type': 'urn:ietf:params:oauth:token-type:access_token',\n            'subject_token': token,\n            'scope': 'openid profile',\n            'audience': 'rucio'\n        }\n        response = requests.post(self.token_url, data=params)\n        print(\"EXCHANGE TOKEN for params\", params)\n        print(response.json())\n        rucio_token = response.json()['access_token']\n\n        return rucio_token\n        \n    async def pre_spawn_start(self, user, spawner):\n        auth_state = await user.get_auth_state()\n        #print(\"AUTH_state\")\n        #pprint.pprint(auth_state)\n        if not auth_state:\n            # user has no auth state\n            return False\n        \n        # define token environment variable from auth_state\n        spawner.environment['RUCIO_ACCESS_TOKEN'] = self.exchange_token(auth_state['access_token'])\n        spawner.environment['EOS_ACCESS_TOKEN'] = auth_state['access_token']\n\n# set the above authenticator as the default\nc.JupyterHub.authenticator_class = RucioAuthenticator\n\n# enable authentication state\nc.GenericOAuthenticator.enable_auth_state = True\n"` |  |
 | jupyterhub.hub.networkPolicy.enabled | bool | `false` |  |
 | jupyterhub.hub.service.type | string | `"ClusterIP"` |  |
+| jupyterhub.ingress.annotations."cert-manager.io/cluster-issuer" | string | `"letsencrypt"` |  |
+| jupyterhub.ingress.annotations."ingress.kubernetes.io/ssl-redirect" | string | `"true"` |  |
+| jupyterhub.ingress.annotations."traefik.frontend.entryPoints" | string | `"http,https"` |  |
 | jupyterhub.ingress.annotations."traefik.ingress.kubernetes.io/router.entrypoints" | string | `"websecure"` |  |
 | jupyterhub.ingress.annotations."traefik.ingress.kubernetes.io/router.tls" | string | `"true"` |  |
 | jupyterhub.ingress.enabled | bool | `true` |  |

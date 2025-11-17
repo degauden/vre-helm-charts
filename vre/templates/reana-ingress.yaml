@@ -3,14 +3,14 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt
-    ingress.kubernetes.io/ssl-redirect: "true"
     meta.helm.sh/release-name: reana
     meta.helm.sh/release-namespace: reana
-    traefik.frontend.entryPoints: http,https
+    {{- if .Values.reana.ingress.annotations }}
+    {{- toYaml .Values.reana.ingress.annotations | nindent 4 }}
+    {{- end }}
   name: {{ .Release.Name }}-reana-ingress
 spec:
-  +  ingressClassName: {{ .Values.reana.ingress.ingressClassName }}
+  ingressClassName: {{ .Values.reana.ingress.ingressClassName }}
   tls:
   - secretName: cert-manager-tls-ingress-secret-reana
     hosts:

@@ -230,7 +230,9 @@ jupyterhub:
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.tls: "true"
-      #cert-manager.io/cluster-issuer: "letsencrypt" # this issues a certificate for the domain through cert-manager automatically
+      cert-manager.io/cluster-issuer: letsencrypt
+      ingress.kubernetes.io/ssl-redirect: "true"
+      traefik.frontend.entryPoints: http,https        
     hosts: []
       # TODO: vre chart value
                
