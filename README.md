@@ -24,40 +24,93 @@ To search for available chart versions:
 helm search repo vre-helm-charts/escape-vre --versions
 ```
 
+## Development
+
+### Using Just
+
+This repository includes a [justfile](https://github.com/casey/just) for common development tasks. Install `just` and run:
+
+```bash
+# Show available commands
+just
+
+# Set chart version automatically from git
+just set-version
+
+# Show current chart version
+just show-version
+
+# Run pre-commit hooks
+just lint
+
+# Create local cluster, install ingress, and deploy
+just create-cluster
+just install-ingress
+just deploy-with-version
+```
+
+### Chart Versioning
+
+The chart version is automatically computed from git tags and commits:
+
+- On a tagged commit (e.g., `v1.0.0`): version is `1.0.0`
+- After a tag with additional commits: version is `1.0.0+dev.3.8c8ab40` (tag + commit count + SHA)
+- Without tags: version is `0.1.0+dev.cc1a9ee` (default + commit SHA)
+
+To set the version manually, use:
+
+```bash
+just set-version
+```
+
+The version is automatically updated by:
+- Pre-commit hook when committing changes to `vre/` directory
+- GitHub Actions workflow when publishing to GitHub Pages
+
 ## Testing locally
 
-
 ### Setting up cluster
-
 
 #### Create a cluster
 
 We recommend using [kind](https://kind.sigs.k8s.io/) to test the charts locally. Chart operations are done using [Skaffold](https://skaffold.dev/):
 
-```
-$ kind create cluster --config dev/kind-config.yaml
+```bash
+# Using just
+just create-cluster
+
+# Or manually
+kind create cluster --config dev/kind-config.yaml
 ```
 
 #### Install an ingress controller
 
 The easiest and production-like way to access local VRE deployment is by installing a simple ingress controller. Production clusters will almost always have only already included.
 
-```
-$ kubectl apply -f https://kind.sigs.k8s.io/examples/ingress/deploy-ingress-nginx.yaml
+```bash
+# Using just
+just install-ingress
+
+# Or manually
+kubectl apply -f https://kind.sigs.k8s.io/examples/ingress/deploy-ingress-nginx.yaml
 ```
 
 #### Customize local values
 
 Even in a local cluster, you may want to use a real IAM instance. To do that, you will need to customize some secret values. You can do it by copying provided example:
 
-```
-$ cp vre/values-custom-example.yaml vre/values-custom.yaml
+```bash
+cp vre/values-custom-example.yaml vre/values-custom.yaml
 ```
 
 #### Deploy VRE
 
-```
-$ skaffold run
+```bash
+# Using just (automatically sets version)
+just deploy-with-version
+
+# Or using skaffold directly
+skaffold run
 ```
 
 
