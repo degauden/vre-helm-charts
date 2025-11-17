@@ -25,7 +25,7 @@ dependencies:
     # repository: https://reanahub.github.io/reana
     
     # this is a version working with indigo IAM and debug mode
-    version: 0.9.4-1-gcd7dcb3
+    version: 0.9.4-1-gcd7dcb3-dev
     repository: https://volodymyrss.github.io/reana
     condition: reana.enabled
 
