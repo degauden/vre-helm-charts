@@ -40,6 +40,21 @@ jobs:
           helm repo add fluent https://fluent.github.io/helm-charts
           helm repo update
 
+      - name: Compute and substitute chart version
+        run: |
+          # Compute version from git
+          VERSION=$(git describe --tags --always --dirty 2>/dev/null || echo "0.1.0-${GITHUB_SHA::8}")
+          # Remove 'v' prefix if present
+          VERSION=${VERSION#v}
+          echo "Computed version: $VERSION"
+
+          # Substitute version in Chart.yaml
+          sed -i "s/^version:.*/version: ${VERSION}/" vre/Chart.yaml
+
+          # Show the updated Chart.yaml
+          echo "Updated Chart.yaml:"
+          grep "^version:" vre/Chart.yaml
+
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
         with:
