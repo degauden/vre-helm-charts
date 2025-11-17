@@ -1,4 +1,4 @@
-{{- if .Values.reana.ingress_override | default true -}}
+{{- if .Values.reana.ingress_override -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
