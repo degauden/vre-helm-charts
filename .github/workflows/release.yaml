@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - first-version-vre-chart
 
 permissions:
   contents: write
