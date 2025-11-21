@@ -6,7 +6,7 @@ The ESCAPE VRE Helm chart is published to GitHub Pages and can be installed from
 
 ```bash
 # Add the VRE Helm chart repository
-helm repo add vre-helm-charts https://vre-hub.github.io/vre-helm-charts
+helm repo add vre-helm-charts https://vre-hub.github.io/helm-charts
 
 # Update your local Helm chart repository cache
 helm repo update
