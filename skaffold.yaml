@@ -9,6 +9,6 @@ deploy:
         chartPath: vre
         valuesFiles:
          - vre/values.yaml
-       # copy vre/values-custom-copy.yaml to vre/values-custom.yaml, set the necessary values, and uncomment this line
+       # copy vre/values-custom-example.yaml to vre/values-custom.yaml, set the necessary values, and uncomment this line
          - vre/values-custom.yaml
         version: 0.1.0-dev0
