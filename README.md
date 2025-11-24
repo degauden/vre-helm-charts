@@ -12,11 +12,13 @@ helm repo add vre-helm-charts https://vre-hub.github.io/helm-charts
 helm repo update
 
 # Install the chart
-helm install my-vre vre-helm-charts/escape-vre
+helm install escape-vre vre-helm-charts/escape-vre
 
 # Or install with custom values
-helm install my-vre vre-helm-charts/escape-vre -f values-custom.yaml
+helm install escape-vre vre-helm-charts/escape-vre -f values-custom.yaml
 ```
+
+Note that release has to be called `escape-vre` to match other values. If you change the release name e.g. to `my-vre`, you need to change another value like `--set nfs-server-provisioner.storageClass.my-vre-shared-volume-storage-class`.
 
 To search for available chart versions:
 
