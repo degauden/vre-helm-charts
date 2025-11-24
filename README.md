@@ -24,6 +24,12 @@ To search for available chart versions:
 helm search repo vre-helm-charts/escape-vre --versions
 ```
 
+If you want to see development versions, you can do:
+
+```bash
+helm search repo vre-helm-charts/escape-vre --versions --devel
+```
+
 ## Development
 
 ### Using Just
