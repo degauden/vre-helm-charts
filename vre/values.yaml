@@ -350,7 +350,7 @@ nfs-server-provisioner:
   persistence:
     enabled: true
     storageClass: ""
-    size: 100M
+    size: "10Gi"
   storageClass:
 
     name: escape-vre-shared-volume-storage-class
@@ -376,8 +376,8 @@ grafana:
     enabled: false
 
   persistentVolume:
-    size: 100Mi
-  retention: "1d"
+    size: "1Gi"
+  retention: "15d"
 
   prometheus-node-exporter:
     enabled: false

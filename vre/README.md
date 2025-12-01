@@ -45,9 +45,9 @@ The Virtual Research Environment developed at CERN.
 | fluent-bit.config.rbac.eventsAccess | bool | `true` |  |
 | fluent-bit.enabled | bool | `false` |  |
 | grafana.enabled | bool | `true` |  |
-| grafana.persistentVolume.size | string | `"100Mi"` |  |
+| grafana.persistentVolume.size | string | `"1Gi"` |  |
 | grafana.prometheus-node-exporter.enabled | bool | `false` |  |
-| grafana.retention | string | `"1d"` |  |
+| grafana.retention | string | `"15d"` |  |
 | grafana.testFramework.enabled | bool | `false` |  |
 | jupyterhub.enabled | bool | `true` |  |
 | jupyterhub.hub.config.JupyterHub.authenticator_class | string | `"generic-oauth"` |  |
@@ -144,7 +144,7 @@ The Virtual Research Environment developed at CERN.
 | loki.write.replicas | int | `0` |  |
 | nfs-server-provisioner.enabled | bool | `true` |  |
 | nfs-server-provisioner.persistence.enabled | bool | `true` |  |
-| nfs-server-provisioner.persistence.size | string | `"100M"` |  |
+| nfs-server-provisioner.persistence.size | string | `"10Gi"` |  |
 | nfs-server-provisioner.persistence.storageClass | string | `""` |  |
 | nfs-server-provisioner.storageClass.mountOptions[0] | string | `"tcp"` |  |
 | nfs-server-provisioner.storageClass.mountOptions[1] | string | `"nfsvers=4.1"` |  |
