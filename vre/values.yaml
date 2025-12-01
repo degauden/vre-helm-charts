@@ -10,6 +10,8 @@ bootstrap:
     tag: "17.5"
     pullPolicy: IfNotPresent
 
+  adminEmail: "admin@example.com"
+  adminPassword: "adminpassword"  # please change this!
 
 
 jupyterhub:

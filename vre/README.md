@@ -32,6 +32,8 @@ The Virtual Research Environment developed at CERN.
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| bootstrap.adminEmail | string | `"admin@example.com"` |  |
+| bootstrap.adminPassword | string | `"adminpassword"` |  |
 | bootstrap.enabled | bool | `true` |  |
 | bootstrap.image.pullPolicy | string | `"IfNotPresent"` |  |
 | bootstrap.image.repository | string | `"alpine/k8s"` |  |
