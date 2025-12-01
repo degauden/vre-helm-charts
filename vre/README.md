@@ -164,7 +164,7 @@ The Virtual Research Environment developed at CERN.
 | reana.components.reana_workflow_controller.image | string | `"docker.io/reanahub/reana-workflow-controller:0.9.4"` |  |
 | reana.components.reana_workflow_controller.imagePullPolicy | string | `"IfNotPresent"` |  |
 | reana.compute_backends[0] | string | `"kubernetes"` |  |
-| reana.db_env_config.REANA_DB_HOST | string | `"postgres-postgresql"` |  |
+| reana.db_env_config.REANA_DB_HOST | string | `"escape-vre-db"` |  |
 | reana.db_env_config.REANA_DB_NAME | string | `"postgres"` |  |
 | reana.db_env_config.REANA_DB_PORT | string | `"5432"` |  |
 | reana.debug.enabled | bool | `false` |  |
