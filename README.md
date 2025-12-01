@@ -20,6 +20,8 @@ helm install escape-vre vre-helm-charts/escape-vre -f values-custom.yaml
 
 Note that release has to be called `escape-vre` to match other values. If you change the release name e.g. to `my-vre`, you need to change another value like `--set nfs-server-provisioner.storageClass.my-vre-shared-volume-storage-class`.
 
+By default, `nfs-server-provisioner` will use default cluster storageclass to host volumes.
+
 To search for available chart versions:
 
 ```bash

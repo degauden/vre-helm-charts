@@ -145,7 +145,7 @@ The Virtual Research Environment developed at CERN.
 | nfs-server-provisioner.enabled | bool | `true` |  |
 | nfs-server-provisioner.persistence.enabled | bool | `true` |  |
 | nfs-server-provisioner.persistence.size | string | `"100M"` |  |
-| nfs-server-provisioner.persistence.storageClass | string | `"standard"` |  |
+| nfs-server-provisioner.persistence.storageClass | string | `""` |  |
 | nfs-server-provisioner.storageClass.mountOptions[0] | string | `"tcp"` |  |
 | nfs-server-provisioner.storageClass.mountOptions[1] | string | `"nfsvers=4.1"` |  |
 | nfs-server-provisioner.storageClass.mountOptions[2] | string | `"retrans=2"` |  |
