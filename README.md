@@ -2,7 +2,13 @@
 
 ## Installation
 
-The ESCAPE VRE Helm chart is published to GitHub Pages and can be installed from the chart repository:
+
+
+The ESCAPE VRE Helm chart is published to GitHub Pages and can be installed from the chart repository.
+
+First please copy and customize `values-custom-example.yaml` to `values-custom.yaml` with your specific configuration, paying special attention to secrets for accessing DB.
+
+Then install the chart using Helm:
 
 ```bash
 # Add the VRE Helm chart repository
