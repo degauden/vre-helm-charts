@@ -15,10 +15,16 @@ spec:
         imagePullPolicy: {{ .Values.bootstrap.initImage.pullPolicy }}
         command: ["/bin/sh", "-c"]
         env:
-        - name: PGPASSWORD
-          value: "{{ .Values.reana.secrets.database.password | default "reana" }}"
         - name: PGUSER
-          value: "{{ .Values.reana.secrets.database.user | default "reana" }}"
+          valueFrom:
+            secretKeyRef:
+              name: release-name-db-secrets
+              key: user
+        - name: PGPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: release-name-db-secrets
+              key: password        
         args:
         - |
           set -ex
