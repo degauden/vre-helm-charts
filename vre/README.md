@@ -1,6 +1,6 @@
 # escape-vre
 
-![Version: 0.1.2-dev2](https://img.shields.io/badge/Version-0.1.2--dev2-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
+![Version: 0.1.2-dev3](https://img.shields.io/badge/Version-0.1.2--dev3-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
 
 The Virtual Research Environment developed at CERN.
 
@@ -46,7 +46,7 @@ The Virtual Research Environment developed at CERN.
 | fluent-bit.config.rbac.create | bool | `true` |  |
 | fluent-bit.config.rbac.eventsAccess | bool | `true` |  |
 | fluent-bit.enabled | bool | `false` |  |
-| grafana.enabled | bool | `true` |  |
+| grafana.enabled | bool | `false` |  |
 | grafana.persistentVolume.size | string | `"1Gi"` |  |
 | grafana.prometheus-node-exporter.enabled | bool | `false` |  |
 | grafana.retention | string | `"15d"` |  |
@@ -117,7 +117,7 @@ The Virtual Research Environment developed at CERN.
 | loki.compactor.replicas | int | `0` |  |
 | loki.deploymentMode | string | `"SingleBinary"` |  |
 | loki.distributor.replicas | int | `0` |  |
-| loki.enabled | bool | `true` |  |
+| loki.enabled | bool | `false` |  |
 | loki.indexGateway.replicas | int | `0` |  |
 | loki.ingester.replicas | int | `0` |  |
 | loki.loki.auth_enabled | bool | `false` |  |

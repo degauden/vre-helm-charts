@@ -372,7 +372,7 @@ nfs-server-provisioner:
 # note that updated reana also contains prometheus and grafana, but they are not enabled by default
 
 grafana:
-  enabled: true
+  enabled: false
 
   testFramework:
     enabled: false
@@ -389,7 +389,7 @@ prometheus:
   enabled: false
 
 loki:
-  enabled: true
+  enabled: false
 
   # this is a minimal configuration for loki; the goal of the UC is not to test diverse loki features,
   # but to make sure that loki can collect meaningful logs from the DPPS components
