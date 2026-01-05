@@ -340,10 +340,6 @@ reana:
     default_disk_limit: 10737418240  # bytes (10 GiB)
     default_cpu_limit: 36000000      # milliseconds (10 hours)
 
-  reana_workflow_controller:
-    imagePullPolicy: IfNotPresent
-    image: docker.io/volodymyrsavchenko/reana-workflow-controller:latest
-
   fluent-bit:
     enabled: false
 
