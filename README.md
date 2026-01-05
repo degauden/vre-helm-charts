@@ -40,6 +40,38 @@ If you want to see development versions, you can do:
 helm search repo vre-helm-charts/escape-vre --versions --devel
 ```
 
+### Example deployment
+
+An example installation command with custom values could look like this:
+
+```bash
+$ helm upgrade --install escape-vre vre/escape-vre -n test --create-namespace --devel \
+ --set nfs-server-provisioner.persistence.storageClass=vspherecsi-resize \
+ --set nfs-server-provisioner.persistence.size=20Gi --set reana.reana_hostname=reana-vre.obsuks5.unige.ch \
+ --set jupyterhub.hub.config.RucioAuthenticator.oauth_callback_url=https://jhub-vre.obsuks5.unige.ch/hub/oauth_callback\
+ --set reana.secrets.login.iam.consumer_key=XXXXX --set reana.secrets.login.iam.consumer_secret=YYYYYYYYYYYYYY
+```
+
+The user has to be authorized manually. The email notification to the admin is not enabled by default, and thus some communication needs to be done between the user and the admin.
+
+To list the users:
+
+```bash
+$ kubectl exec -i -t deployment/escape-vre-server -- flask reana-admin user-list --admin-access-token $REANA_ACCESS_TOKEN
+```
+
+To authorize (the user had to try to connect beforehand):
+
+```bash
+$ kubectl exec -i -t deployment/escape-vre-server -- flask reana-admin token-grant \
+--email user@example.com --admin-access-token $REANA_ACCESS_TOKEN
+```
+The redirect URIs to be used in INDIGO IAM have to be:
+
+* https://jhub-vre.obsuks5.unige.ch/hub/oauth_callback
+* https://reana-vre.obsuks5.unige.ch/api/oauth/authorized/keycloak/ (please mind the trailing "/")
+* https://reana-vre.obsuks5.unige.ch/hub/oauth_callback
+
 ## Development
 
 ### Using Just
