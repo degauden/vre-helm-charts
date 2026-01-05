@@ -3,7 +3,7 @@ entries:
   escape-vre:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-01-05T14:14:06.155308659Z"
+    created: "2026-01-05T14:14:44.191443625Z"
     dependencies:
     - condition: jupyterhub.enabled
       name: jupyterhub
@@ -34,7 +34,7 @@ entries:
       repository: https://fluent.github.io/helm-charts
       version: 0.48.9
     description: The Virtual Research Environment developed at CERN.
-    digest: 3e371cbc8e60cbcfa130b8f18562ed90b134b1d0c992250f7464d7df497098b8
+    digest: a5fa99e6a63e619f47ee2a9c5b9bdbd8c3a7654528611b4135dbb03a8cbec739
     home: https://vre-hub.github.io
     icon: https://vre-hub.github.io/img/favicon.ico
     keywords:
@@ -85,6 +85,56 @@ entries:
       version: 0.48.9
     description: The Virtual Research Environment developed at CERN.
     digest: 08e23f3a91f0cf9e644136a4d0de30d47698938ae571514ecf96635c331c624c
+    home: https://vre-hub.github.io
+    icon: https://vre-hub.github.io/img/favicon.ico
+    keywords:
+    - jupyterhub
+    - rucio
+    - reana
+    maintainers:
+    - email: vre-team@example.com
+      name: VRE Team
+      url: https://vre-hub.github.io
+    name: escape-vre
+    sources:
+    - https://github.com/vre-hub/vre
+    urls:
+    - https://github.com/vre-hub/helm-charts/releases/download/escape-vre-0.1.2-dev4/escape-vre-0.1.2-dev4.tgz
+    version: 0.1.2-dev4
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2026-01-05T14:14:06.155308659Z"
+    dependencies:
+    - condition: jupyterhub.enabled
+      name: jupyterhub
+      repository: https://hub.jupyter.org/helm-chart
+      version: 3.3.7
+    - condition: reana.enabled
+      name: reana
+      repository: https://volodymyrss.github.io/reana
+      version: 0.9.4-1-gcd7dcb3-dev
+    - condition: nfs-server-provisioner.enabled
+      name: nfs-server-provisioner
+      repository: https://kubernetes-sigs.github.io/nfs-ganesha-server-and-external-provisioner
+      version: 1.8.0
+    - condition: grafana.enabled
+      name: grafana
+      repository: https://grafana.github.io/helm-charts
+      version: 9.2.2
+    - condition: prometheus.enabled
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 27.20.0
+    - condition: loki.enabled
+      name: loki
+      repository: https://grafana.github.io/helm-charts
+      version: 6.30.1
+    - condition: fluent-bit.enabled
+      name: fluent-bit
+      repository: https://fluent.github.io/helm-charts
+      version: 0.48.9
+    description: The Virtual Research Environment developed at CERN.
+    digest: 3e371cbc8e60cbcfa130b8f18562ed90b134b1d0c992250f7464d7df497098b8
     home: https://vre-hub.github.io
     icon: https://vre-hub.github.io/img/favicon.ico
     keywords:
@@ -1101,4 +1151,4 @@ entries:
     urls:
     - https://github.com/vre-hub/helm-charts/releases/download/escape-vre-0.1.0-bdc4ba4e/escape-vre-0.1.0-bdc4ba4e.tgz
     version: 0.1.0-bdc4ba4e
-generated: "2026-01-05T14:14:06.155635362Z"
+generated: "2026-01-05T14:14:44.191745377Z"
