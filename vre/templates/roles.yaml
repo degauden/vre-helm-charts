@@ -23,11 +23,10 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: {{ include "escape-vre.fullname" . }}-bootstrap-sa
-  apiGroup: ""
 roleRef:
   kind: Role
   name: {{ include "escape-vre.fullname" . }}-bootstrap-role
-  apiGroup: ""
+  apiGroup: rbac.authorization.k8s.io
   
   
   
