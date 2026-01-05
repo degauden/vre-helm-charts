@@ -101,7 +101,7 @@ kind create cluster --config dev/kind-config.yaml
 
 #### Install an ingress controller
 
-The easiest and production-like way to access local VRE deployment is by installing a simple ingress controller. Production clusters will almost always have only already included.
+The easiest and production-like way to access local VRE deployment is by installing a simple ingress controller. Production clusters will almost always already have one included.
 
 ```bash
 # Using just
