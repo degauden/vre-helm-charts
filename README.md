@@ -57,7 +57,7 @@ The user has to be authorized manually. The email notification to the admin is n
 Get an admin access token (replace `<admin-email>` with the actual email):
 
 ```bash
-kubectl get secrets  escape-vre-admin-access-token -o 'jsonpath={.data.ADMIN_ACCESS_TOKEN}' | base64 -d
+$ REANA_ACCESS_TOKEN=$(kubectl get secrets  escape-vre-admin-access-token -o 'jsonpath={.data.ADMIN_ACCESS_TOKEN}' | base64 -d)
 ```
 
 To list the users:

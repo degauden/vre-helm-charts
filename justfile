@@ -65,6 +65,14 @@ lint:
 show-version:
     @grep "^version:" vre/Chart.yaml
 
+list-users:
+    REANA_ACCESS_TOKEN=$(kubectl get secrets  escape-vre-admin-access-token -o 'jsonpath={.data.ADMIN_ACCESS_TOKEN}' | base64 -d) && \
+    kubectl exec -i -t deployment/escape-vre-server -- flask reana-admin user-list --admin-access-token $REANA_ACCESS_TOKEN
+
+token-grant email:
+    REANA_ACCESS_TOKEN=$(kubectl get secrets  escape-vre-admin-access-token -o 'jsonpath={.data.ADMIN_ACCESS_TOKEN}' | base64 -d) && \
+    kubectl exec -i -t deployment/escape-vre-server -- flask reana-admin token-grant --email {{email}} --admin-access-token $REANA_ACCESS_TOKEN
+
 # Default recipe (show available commands)
 default:
     @just --list
