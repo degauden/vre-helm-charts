@@ -21,13 +21,8 @@ dependencies:
     # version: 0.95.0-alpha.2          
 
     # this is the latest stable version, has an issue with debug mode
-    # version: 0.9.4
-    # repository: https://reanahub.github.io/reana
-    
-    # this is a version working with indigo IAM and debug mode
-    version: 0.9.4-1-gcd7dcb3-dev
-    repository: https://volodymyrss.github.io/reana
-    condition: reana.enabled
+    version: 0.9.4
+    repository: https://reanahub.github.io/reana
 
   - name: nfs-server-provisioner
     condition: nfs-server-provisioner.enabled
