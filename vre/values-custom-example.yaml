@@ -1,15 +1,18 @@
 # please revise and set all these values!
 
 bootstrap:
-  adminEmail: "admin@example.com"
-  adminPassword: 
+  reanaAdminEmail: "admin@example.com"
+  reanaAdminPassword: 
 
 jupyterhub:
   hub:
     config:
       RucioAuthenticator:
+        # -- Credentials for accessing identity provider (IAM in this case). Must be set for authentication to work, must have token-exchange permissions in IAM.
+        # During production deployment, these credentials are best set in a Kubernetes secret, and linked with GitOps settings. 
         client_id:
         client_secret:
+        # -- URLs for the identity provider (IAM in this case). Must be set for authentication to work.
         authorize_url: https://iam-et.cloud.cnaf.infn.it/authorize
         token_url: https://iam-et.cloud.cnaf.infn.it/token
         userdata_url: https://iam-et.cloud.cnaf.infn.it/userinfo
@@ -17,6 +20,7 @@ jupyterhub:
     
   singleuser:
     extraEnv:
+      # -- These environment variables are used by the RucioAuthenticator to connect to RUCIO. They should be set according to the RUCIO instance you want to connect to. The example values are for the CERN VRE RUCIO instance, but they should be changed if you want to connect to a different RUCIO instance.
       RUCIO_NAME: "vre-rucio.cern.ch"
       RUCIO_DEFAULT_INSTANCE: "vre-rucio.cern.ch"
       RUCIO_BASE_URL: "https://vre-rucio.cern.ch"
@@ -28,6 +32,8 @@ jupyterhub:
   ingress:
     ingressClassName: null
     hosts:
+    # -- Set the host for the JupyterHub ingress. This should be set to the domain name you want to use for accessing JupyterHub. 
+    # Note that callback URLs for authentication will be based on this domain.
     - vre.example.local
 
 reana:
@@ -58,9 +64,8 @@ reana:
     # to connect to a database:
     # REANA_DB_USERNAME: containing the database user name.
     # REANA_DB_PASSWORD: containing the password for the user previously set.
-    # Both environment variables should be set inside a Kubernetes secret:
-    # `[release-name]-db`
 
+  # -- These settings are used to configure the login options for REANA. 
   login:
     - name: "iam"
       type: "keycloak"
@@ -89,11 +94,6 @@ nfs-server-provisioner:
     size: 100M
 
   storageClass:
-    # this name
+    # this name MUST start with helm release name (escape-vre in this case) to be picked up by the reana-db and reana-shared-volume subcharts
     name: escape-vre-shared-volume-storage-class
 
-
-grafana:
-  persistentVolume:
-    size: 100Mi
-  retention: "1d"

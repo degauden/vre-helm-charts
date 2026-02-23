@@ -1,6 +1,6 @@
 # escape-vre
 
-![Version: 0.1.2-dev4](https://img.shields.io/badge/Version-0.1.2--dev4-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
+![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
 
 The Virtual Research Environment developed at CERN.
 
@@ -32,8 +32,6 @@ The Virtual Research Environment developed at CERN.
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| bootstrap.adminEmail | string | `"admin@example.com"` |  |
-| bootstrap.adminPassword | string | `"adminpassword"` |  |
 | bootstrap.enabled | bool | `true` |  |
 | bootstrap.image.pullPolicy | string | `"IfNotPresent"` |  |
 | bootstrap.image.repository | string | `"alpine/k8s"` |  |
@@ -41,6 +39,8 @@ The Virtual Research Environment developed at CERN.
 | bootstrap.initImage.pullPolicy | string | `"IfNotPresent"` |  |
 | bootstrap.initImage.repository | string | `"postgres"` |  |
 | bootstrap.initImage.tag | string | `"17.5"` |  |
+| bootstrap.reanaAdminEmail | string | `"admin@example.com"` |  |
+| bootstrap.reanaAdminPassword | string | `"adminpassword"` |  |
 | fluent-bit.config.inputs | string | `"[INPUT]\n    Name tail\n    Path /var/log/containers/*.log\n    multiline.parser docker, cri\n    Tag kube.*\n    Mem_Buf_Limit 5MB\n    Buffer_Chunk_Size 1\n    Refresh_Interval 1\n    Skip_Long_Lines On\n"` |  |
 | fluent-bit.config.outputs | string | `"[FILTER]\n    Name grep\n    Match *\n\n[OUTPUT]\n    Name        loki\n    Match       *\n    Host        {{ .Release.Name }}-loki-gateway\n    port        80\n    tls         off\n    tls.verify  off\n"` |  |
 | fluent-bit.config.rbac.create | bool | `true` |  |
@@ -55,6 +55,8 @@ The Virtual Research Environment developed at CERN.
 | jupyterhub.hub.config.JupyterHub.authenticator_class | string | `"generic-oauth"` |  |
 | jupyterhub.hub.config.RucioAuthenticator.allow_all | bool | `true` |  |
 | jupyterhub.hub.config.RucioAuthenticator.authorize_url | string | `"https://iam-escape.cloud.cnaf.infn.it/authorize"` |  |
+| jupyterhub.hub.config.RucioAuthenticator.client_id | string | `nil` |  |
+| jupyterhub.hub.config.RucioAuthenticator.client_secret | string | `nil` |  |
 | jupyterhub.hub.config.RucioAuthenticator.enable_auth_state | bool | `true` |  |
 | jupyterhub.hub.config.RucioAuthenticator.oauth_callback_url | string | `"https://jhub-vre.obsuks4.unige.ch/hub/oauth_callback"` |  |
 | jupyterhub.hub.config.RucioAuthenticator.scope[0] | string | `"openid"` |  |
@@ -108,6 +110,9 @@ The Virtual Research Environment developed at CERN.
 | jupyterhub.singleuser.profileList[0].default | bool | `true` |  |
 | jupyterhub.singleuser.profileList[0].description | string | `"Based on a scipy notebook environment with a python-3.11 kernel, the rucio jupyterlab extension and the reana client installed."` |  |
 | jupyterhub.singleuser.profileList[0].display_name | string | `"Default environment"` |  |
+| jupyterhub.singleuser.profileList[1].default | bool | `false` |  |
+| jupyterhub.singleuser.profileList[1].description | string | `"Based on a scipy notebook environment with a python-3.11 kernel, the rucio jupyterlab extension and the reana client installed."` |  |
+| jupyterhub.singleuser.profileList[1].display_name | string | `"Default environment, multi-RI rucio 39.2"` |  |
 | jupyterhub.singleuser.startTimeout | int | `1200` |  |
 | jupyterhub.singleuser.storage.extraVolumeMounts | list | `[]` |  |
 | jupyterhub.singleuser.storage.extraVolumes | list | `[]` |  |

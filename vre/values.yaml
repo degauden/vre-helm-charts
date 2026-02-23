@@ -10,8 +10,8 @@ bootstrap:
     tag: "17.5"
     pullPolicy: IfNotPresent
 
-  adminEmail: "admin@example.com"
-  adminPassword: "adminpassword"  # please change this!
+  reanaAdminEmail: "admin@example.com"
+  reanaAdminPassword: "adminpassword"  # please change this!
 
 
 jupyterhub:
@@ -36,8 +36,8 @@ jupyterhub:
       JupyterHub:
         authenticator_class: "generic-oauth"
       RucioAuthenticator:
-        # client_id: "" # set through secret
-        # client_secret: "" #  set through secret
+        client_id:
+        client_secret:
         authorize_url: https://iam-escape.cloud.cnaf.infn.it/authorize
         token_url: https://iam-escape.cloud.cnaf.infn.it/token
         userdata_url: https://iam-escape.cloud.cnaf.infn.it/userinfo
@@ -178,6 +178,9 @@ jupyterhub:
       - display_name: "Default environment"
         description: "Based on a scipy notebook environment with a python-3.11 kernel, the rucio jupyterlab extension and the reana client installed."
         default: true
+      - display_name: "Default environment, multi-RI rucio 39.2"
+        description: "Based on a scipy notebook environment with a python-3.11 kernel, the rucio jupyterlab extension and the reana client installed."
+        default: false
 
     # nodeSelector: 
     #   jupyter: singleuser
