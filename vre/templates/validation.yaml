@@ -1,0 +1,23 @@
+{{- if not .Values.bootstrap.reanaAdminPassword }}
+{{- fail "bootstrap.reanaAdminPassword must be set in values" }}
+{{- end }}
+
+{{- if not .Values.bootstrap.reanaAdminEmail }}
+{{- fail "bootstrap.reanaAdminEmail must be set in values" }}
+{{- end }}
+
+{{- if not .Values.jupyterhub.hub.config.RucioAuthenticator.client_id }}
+{{- fail "jupyterhub.hub.config.RucioAuthenticator.client_id must be set in values. It can be obtained from the identity provider: e.g. IAM or Keycloak." }}
+{{- end }}
+
+{{- if not .Values.jupyterhub.hub.config.RucioAuthenticator.client_secret }}
+{{- fail "jupyterhub.hub.config.RucioAuthenticator.client_secret must be set in values. It can be obtained from the identity provider: e.g. IAM or Keycloak." }}
+{{- end }}
+
+{{- if not .Values.reana.secrets.login.iam.consumer_key }}
+{{- fail "reana.secrets.login.iam.consumer_key must be set in values. It can be obtained from the identity provider: e.g. IAM or Keycloak." }}
+{{- end }}
+
+{{- if not .Values.reana.secrets.login.iam.consumer_secret }}
+{{- fail "reana.secrets.login.iam.consumer_secret must be set in values. It can be obtained from the identity provider: e.g. IAM or Keycloak." }}
+{{- end }}
